@@ -72,6 +72,11 @@ body {
     text-align: center;
 }
 
+/* Optional Task*/
+#unfunded-btn:hover, #funded-btn:hover, #all-btn:hover {
+    background-color: rgb(10, 91, 102); 
+}
+
 button {
     font-family: 'Cabin';
     border: none;
@@ -79,3 +84,4 @@ button {
     margin: 1%;
     border-radius: 7px;
 }
+
