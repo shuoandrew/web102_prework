@@ -45,8 +45,6 @@ function addGamesToPage(games) {
         <img src="${game.img}" alt="${game.name}" class="game-img">
         <h2>${game.name}</h2>
         <p>${game.description}</p>
-        <p>Pledged: $${game.pledged}</p>
-        <p>Goal: $${game.goal}</p>
         <p>Backers: ${game.backers}</p>
       `;
 
@@ -149,7 +147,7 @@ const unfundedGames = GAMES_JSON.filter(game => game.pledged < game.goal);
 const numUnfundedGames = unfundedGames.length;
 
 // create a string that explains the number of unfunded games using the ternary operator
-let displayStr = `A total of $${totalRaised} has been raised for ${totalGames} games. Currently, ${numUnfundedGames} game${numUnfundedGames === 1 ? '' : 's'} remain unfunded. We need your help to find these amazing games!`;
+let displayStr = `A total of $${totalRaised.toLocaleString('en-US')} has been raised for ${totalGames} games. Currently, ${numUnfundedGames} game${numUnfundedGames === 1 ? '' : 's'} remain unfunded. We need your help to find these amazing games!`;
 
 // create a new DOM element containing the template string and append it to the description container
 const p = document.createElement('p');
@@ -172,11 +170,12 @@ const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
 const [firstGame, secondGame, ...remainingGames] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
-const firstGameName = document.createElement('h2');
+const firstGameName = document.createElement('p');
 firstGameName.textContent = firstGame.name;
 firstGameContainer.appendChild(firstGameName);
 
 // do the same for the runner up item
-const secondGameName = document.createElement('h2');
+const secondGameName = document.createElement('p');
 secondGameName.textContent = secondGame.name;
 secondGameContainer.appendChild(secondGameName);
+
